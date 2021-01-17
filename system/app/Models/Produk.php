@@ -2,19 +2,18 @@
 
 namespace App\Models;
 
-class Produk extends Model{
-	protected $table = 'produk';
+use App\Models\Traits\Attributes\ProdukAttributes;
+use App\Models\Traits\Relations\ProdukRelations;
 
+class Produk extends Model{
+	
+	use ProdukAttributes, ProdukRelations;
+
+	protected $table = 'produk';
 	protected $casts = [
 		'created_at' => 'datetime',
+		'updated_at' => 'datetime',
 		'berat' => 'decimal:2'
 	];
 
-	function getHargaStringAttribute(){
-		return "Rp. ".number_format($this->attributes['harga']);
-	}
-	function getTanggalProduksiAttribute(){
-		$tanggal = $this->created_at;
-		return strftime("%d %b %Y", strtotime($this->created_at));
-	}
 }

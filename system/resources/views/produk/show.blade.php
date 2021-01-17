@@ -9,21 +9,20 @@
 					Detail Data Produk
 				</div>
 				<div class="card-body">
-					<table class="table">
+						<table class="table">
 						<tbody>
+							<div class="form-group">
+							<label for="" class="control-label">Nama</label>
 							<h3>{{$produk->nama_produk}}</h3>
-							<hr>
-							<p>
-							{{$produk->harga}} |
-							Stok : {{$produk->stok}} |
-							Berat : {{$produk->berat}} kg |
-							Tanggal Produksi : {{$produk->created_at->diffForHumans()}} 
-							</p>
+							</div>
+							@include('produk.show.detail')
 							<p>
 								{!! nl2br($produk->deskripsi) !!}
 							</p>
-						</tbody>
-					</table>
+							<p>
+								<img src="{{url("system/public/$produk->foto")}}" alt="">
+							</p>
+
 				</div>
 			</div>
 		</div>

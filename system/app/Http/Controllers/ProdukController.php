@@ -23,9 +23,11 @@ class ProdukController extends Controller
 		$produk->stok = request('stok');
 		$produk->save();
 
+		$produk->handleUploadFoto();
+
 		return redirect('produk')->with('success','Data Berhasil Ditambahkan');
-		// dd(request()->all());
-	}
+		
+		}
 
 	function show(Produk $produk){
 		$data['produk'] = $produk;
@@ -45,22 +47,25 @@ class ProdukController extends Controller
 		$produk->stok = request('stok');
 		$produk->save();
 
+		$produk->handleUploadFoto();
+
 		return redirect('produk')->with('success','Data Berhasil Diubah');
 	}
 
 	function destroy(Produk $produk){
+		$produk->handleDelete();
 		$produk->delete();
 		return redirect('produk')->with('danger','Data Berhasil Dihapus');
 	}
 
 	function filter(){
+		//$data['list_produk'] = Produk::whereIn('stok', $stok)->get();
+		//$data['list_produk'] = Produk::whereBetween('harga', [$harga_min, $harga_max])->get();
 		$nama_produk = request('nama_produk');
 		$stok = explode(",", request('stok'));
 		$data['harga_min'] = $harga_min = request('harga_min');
 		$data['harga_max'] = $harga_max = request('harga_max');
-		$data['list_produk'] = Produk::where('nama_produk', 'Like',  "$nama_produk")->get();
-		$data['list_produk'] = Produk::whereIn('stok', $stok)->get();
-		$data['list_produk'] = Produk::whereBetween('harga', [$harga_min, $harga_max])->get();
+		$data['list_produk'] = Produk::where('nama_produk', 'Like',  "%$nama_produk%")->get();
 		$data['nama_produk'] = $nama_produk;
 		$data['stok'] = request('stok');
 		return view('produk.index', $data);

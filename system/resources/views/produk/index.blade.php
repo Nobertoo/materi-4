@@ -1,3 +1,4 @@
+
 @extends('template.base')
 
 @section('content')
@@ -45,7 +46,7 @@
 					<a href="{{url('produk/create')}}" class="btn btn-dark float-right"><i class="fa fa-plus"></i> Tambah</a>
 				</div>
 				<div class="card-body">
-					<table class="table">
+					<table class="table table-dataTables">
 						<thead>
 							<th>No</th>
 							<th>Aksi</th>
@@ -61,7 +62,7 @@
 								<div class="btn-group">
 								<a href="{{url('produk', $produk->id)}}" class="btn btn-dark float-right"><i class="fa fa-info"></i></a>
 								<a href="{{url('produk', $produk->id)}}/edit" class="btn btn-warning float-right"><i class="fa fa-edit"></i></a>
-								@include('template.utils.delete', ['url' => url('admin/produk', $produk->id)])
+								@include('template.utils.delete', ['url' => url('produk', $produk->id)])
 								</div>
 							</td>
 							<td>{{$produk->nama_produk}}</td>
