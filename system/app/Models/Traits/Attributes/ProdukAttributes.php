@@ -11,7 +11,7 @@ Trait ProdukAttributes {
 		return strftime("%d %b %Y", strtotime($this->created_at));
 	}
 	function handleUploadFoto(){
-		$this handleDelete();
+		$this->handleDelete();
 		if(request()->hasFile('foto')){
 			$foto = request()->file('foto');
 			$destination = "images/produk";
@@ -27,8 +27,8 @@ Trait ProdukAttributes {
 	function handleDelete(){
 		$foto = $this->foto;
 		$path = public_path($foto);
-		if(filr_exists($path)){
-			unlink($path);
+		if(file_exists($path)){
+			// unlink($path);
 		}
 		return true;
 	}

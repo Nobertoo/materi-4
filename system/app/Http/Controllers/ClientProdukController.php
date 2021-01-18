@@ -14,4 +14,5 @@ class ClientProdukController extends Controller
 		$data['produk'] = $produk;
 		return view('produk_single', $data);
 	}
+
 }

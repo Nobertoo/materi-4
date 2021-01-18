@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientProdukController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KategoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +47,21 @@ Route::get('logout', [AuthController::class, 'logout']);
     Route::get('produk/{produk}/edit', [ProdukController::class, 'edit']);
     Route::put('produk/{produk}', [ProdukController::class, 'update']);
     Route::delete('produk/{produk}', [ProdukController::class, 'destroy']);
+
+
+    //kategori
+     Route::get('kategori', [KategoriController::class, 'index']);
+    Route::get('kategori/create', [KategoriController::class, 'create']);
+    Route::post('kategori', [KategoriController::class, 'store']);
+    Route::get('kategori/{kategori}', [KategoriController::class, 'show']);
+    Route::get('kategori/{kategori}/edit', [KategoriController::class, 'edit']);
+    Route::put('kategori/{kategori}', [KategoriController::class, 'update']);
+    Route::delete('kategori/{produk}', [KategoriController::class, 'destroy']);
+
+
+
+    // Client
+    Route::get('welcome', [ClientController::class, 'showClient']);
   
    
    

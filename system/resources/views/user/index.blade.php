@@ -28,7 +28,7 @@
 								<div class="btn-group">
 								<a href="{{url('user', $user->id)}}" class="btn btn-dark float-right"><i class="fa fa-info"></i></a>
 								<a href="{{url('user', $user->id)}}/edit" class="btn btn-warning float-right"><i class="fa fa-edit"></i></a>
-								@include('template.utils.delete', ['url' => url('admin/user', $user->id)])
+								@include('template.utils.delete', ['url' => url('user', $user->id)])
 								</div>
 							</td>
 							<td>{{$user->username}}</td>

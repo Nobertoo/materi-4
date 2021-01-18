@@ -29,4 +29,6 @@ class AuthController extends Controller
 	function forgotPassword(){
 		
 	}
+
+	
 }
